@@ -1,3 +1,17 @@
+# ProductManagement- Project Overview
+This application contains 2 pages
+1. Product List.
+2. Product Detail.
+
+This Project uses following Angular 2 features
+1. Nested Components
+2. Templates, Interpolation ,Custome Directives & Built-In directives
+3. Data Binding and Custom Pipes
+4. Services and Dependency Injection
+5. Retrieving data using HTTP
+6. Navigation and Routing
+7. Angular Modules.
+
 # ProductManagement
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
