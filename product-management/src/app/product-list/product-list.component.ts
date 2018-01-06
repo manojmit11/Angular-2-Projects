@@ -101,7 +101,11 @@ export class ProductListComponent implements OnInit{
    performFilter(filterBy:string):IProduct[]{
      filterBy = filterBy ? filterBy.toLocaleLowerCase() : null;
      return this.products.filter((product: IProduct) =>
-     product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1) : value;
+             product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+   }
+
+   onRatingClicked(message:string):void{
+     console.log(message +' ' +'from product-list component');
    }
 
 }
