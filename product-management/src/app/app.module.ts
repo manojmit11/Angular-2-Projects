@@ -7,6 +7,11 @@ import {ConvertToSpacesPipe} from "./shared/convert-to-spaces";
 import {StarComponent} from "./shared/star.component";
 import {ProductService} from "./product-list/product.service";
 import {HttpClientModule} from "@angular/common/http";
+import { ProductDetailComponent } from './products/product-detail.component';
+import { WelcomeComponent } from './home/welcome.component';
+import {RouterModule} from "@angular/router";
+import {ProductGuardService} from "./products/product-guard.service";
+
 
 
 @NgModule({
@@ -14,14 +19,28 @@ import {HttpClientModule} from "@angular/common/http";
     AppComponent,
     ProductListComponent,
     ConvertToSpacesPipe,
-    StarComponent
-  ],
+    StarComponent,
+    ProductDetailComponent,
+    WelcomeComponent,
+   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(
+      [
+      {path: 'products' ,component: ProductListComponent},
+      { path: 'products/:id',
+        canActivate: [ProductGuardService],
+        component : ProductDetailComponent
+      },
+        {path: 'welcome', component : WelcomeComponent},
+        {path: '', redirectTo:'welcome', pathMatch:'full'},
+        {path: '**', redirectTo:'welcome', pathMatch:'full'}
+      ]
+    )
   ],
-  providers: [ProductService],
+  providers: [ProductService,ProductGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

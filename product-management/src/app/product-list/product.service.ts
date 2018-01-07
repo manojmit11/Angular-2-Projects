@@ -13,7 +13,7 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class ProductService{
-  private _productUrl='src/app/product-list/products.json';
+  private _productUrl='assets/products.json';
 
   constructor(private _http: HttpClient){
 
