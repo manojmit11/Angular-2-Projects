@@ -11,36 +11,28 @@ import { ProductDetailComponent } from './products/product-detail.component';
 import { WelcomeComponent } from './home/welcome.component';
 import {RouterModule} from "@angular/router";
 import {ProductGuardService} from "./products/product-guard.service";
+import { ProdcutModule } from './products/prodcut.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent,
-    ConvertToSpacesPipe,
-    StarComponent,
-    ProductDetailComponent,
     WelcomeComponent,
    ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpClientModule,
     RouterModule.forRoot(
       [
-      {path: 'products' ,component: ProductListComponent},
-      { path: 'products/:id',
-        canActivate: [ProductGuardService],
-        component : ProductDetailComponent
-      },
+
         {path: 'welcome', component : WelcomeComponent},
         {path: '', redirectTo:'welcome', pathMatch:'full'},
         {path: '**', redirectTo:'welcome', pathMatch:'full'}
       ]
-    )
+    ),
+    ProdcutModule
   ],
-  providers: [ProductService,ProductGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
