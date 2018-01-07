@@ -17,6 +17,7 @@ export class ProductListComponent implements OnInit{
   imageMargin: number=2;
   showImage: boolean=false;
   buttonText: string="Show Image";
+  errorMessage: string;
 
   _listFilter:string;
 
@@ -95,9 +96,13 @@ export class ProductListComponent implements OnInit{
    }
 
    ngOnInit():void{
-     console.log("In OnIt");
-     this.products=this._productService.getProducts();
 
+     this._productService.getProducts()
+       .subscribe(products => {
+           this.products=products;
+           this.filteredProducts=products;
+         },
+             error => this.errorMessage=<any>error );
    }
 
    performFilter(filterBy:string):IProduct[]{
